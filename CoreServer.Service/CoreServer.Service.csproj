@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CoreServer.Common\CoreServer.Common.csproj" />
+      <ProjectReference Include="..\CoreServer.Entity\CoreServer.Entity.csproj" />
+      <ProjectReference Include="..\CoreServer.Model\CoreServer.Model.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="9.0.0" />
+      <PackageReference Include="sqlSugarCore" Version="5.0.0.11" />
+    </ItemGroup>
+
+</Project>
