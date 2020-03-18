@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoreServer.Entity
+namespace CoreServer.Entity.MySqlDb
 {
     public class Product
     {

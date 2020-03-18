@@ -24,22 +24,19 @@ namespace CoreServer.Api.Controllers
             return _productService.GetProducts();
         }
 
-        [Route(("addProduct"))]
-        [HttpPost]
+        [HttpPost("addProduct")]
         public ProductDto AddProduct(ProductDto productDto)
         {
             return _productService.AddProduct(productDto);
         }
 
-        [Route(("updateProduct"))]
-        [HttpPut]
+        [HttpPut("updateProduct")]
         public void UpdateProduct(ProductDto productDto)
         {
             _productService.UpdateProduct(productDto);
         }
 
-        [Route("deleteProduct/{id:guid}")]
-        [HttpDelete]
+        [HttpDelete("deleteProduct")]
         public void DeleteProduct(Guid id)
         {
             _productService.DeleteProduct(id);

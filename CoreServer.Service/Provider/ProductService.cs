@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CoreServer.Common;
-using CoreServer.Entity;
+using CoreServer.Entity.MySqlDb;
 using CoreServer.Model;
 
 namespace CoreServer.Service.Provider
@@ -19,7 +19,7 @@ namespace CoreServer.Service.Provider
 
         public List<ProductDto> GetProducts()
         {
-            return Execute(db =>
+            return ProductContext.Execute(db =>
             {
                 return db.Queryable<Product>()
                     .Select<ProductDto>()
@@ -34,7 +34,7 @@ namespace CoreServer.Service.Provider
 
         public ProductDto AddProduct(ProductDto product)
         {
-            return Execute(db =>
+            return ProductContext.Execute(db =>
             {
                 var productEntity = MapUtil.Map<Product>(product);
                 productEntity.Id = Guid.NewGuid();
@@ -45,7 +45,7 @@ namespace CoreServer.Service.Provider
 
         public void DeleteProduct(Guid productId)
         {
-            Execute(db =>
+            ProductContext.Execute(db =>
             {
                 db.Deleteable<Product>()
                     .Where(i => i.Id == productId)
@@ -55,7 +55,7 @@ namespace CoreServer.Service.Provider
 
         public void UpdateProduct(ProductDto productDto)
         {
-            Execute(db =>
+            ProductContext.Execute(db =>
             {
                 db.Updateable<Product>(MapUtil.Map<Product>(productDto))
                     .ExecuteCommand();
