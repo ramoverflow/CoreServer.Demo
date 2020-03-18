@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using CoreServer.Api.Extensions;
 using CoreServer.Common;
+using CoreServer.Common.Configuration;
 using CoreServer.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,11 +22,9 @@ namespace CoreServer.Api
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            AppConfig.Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
-
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
