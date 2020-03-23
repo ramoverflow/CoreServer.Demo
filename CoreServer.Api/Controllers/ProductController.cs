@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CoreServer.Common.Util;
 using CoreServer.Model;
 using CoreServer.Service;
+using DotNetCore.CAP;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreServer.Api.Controllers
@@ -13,9 +16,18 @@ namespace CoreServer.Api.Controllers
     {
         private readonly IProductService _productService;
 
-        public ProductController(IProductService productService)
+        private readonly ICapPublisher _capPublisher;
+
+        private readonly EventObserver<ProductDto> OnAddNewProduct;
+
+        public ProductController(IProductService productService, ICapPublisher capPublisher)
         {
             _productService = productService;
+            _capPublisher = capPublisher;
+
+            OnAddNewProduct =
+                new EventObserver<ProductDto>(newProduct => { _capPublisher.Publish("xxxx", newProduct); });
+            OnAddNewProduct.Subscribe(_productService.OnAddProduct());
         }
 
         [HttpGet("getProducts")]
@@ -27,7 +39,8 @@ namespace CoreServer.Api.Controllers
         [HttpPost("addProduct")]
         public ProductDto AddProduct(ProductDto productDto)
         {
-            return _productService.AddProduct(productDto);
+            var product = _productService.AddProduct(productDto);
+            return product;
         }
 
         [HttpPut("updateProduct")]

@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Savorboard.CAP.InMemoryMessageQueue;
 
 namespace CoreServer.Api
 {
@@ -36,6 +37,8 @@ namespace CoreServer.Api
                     services.AddSingleton(serviceAttribute.Interface, serviceType);
                 }
             }
+            
+            services.AddCap(config => { config.UseInMemoryMessageQueue(); });
             
             services.AddControllers();
         }

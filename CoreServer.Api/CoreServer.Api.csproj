@@ -9,5 +9,10 @@
       <ProjectReference Include="..\CoreServer.Service\CoreServer.Service.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="DotNetCore.CAP" Version="3.0.2" />
+      <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.0.0" />
+    </ItemGroup>
+
 
 </Project>

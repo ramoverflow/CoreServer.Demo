@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CoreServer.Common.Util;
 using CoreServer.Model;
 
 namespace CoreServer.Service
@@ -12,5 +13,7 @@ namespace CoreServer.Service
         ProductDto AddProduct(ProductDto product);
         void DeleteProduct(Guid productId);
         void UpdateProduct(ProductDto productDto);
+
+        EventObservable<ProductDto> OnAddProduct();
     }
 }
