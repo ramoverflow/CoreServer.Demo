@@ -1,6 +1,6 @@
 using System;
 
-namespace CoreServer.Common.Util
+namespace CoreServer.Common.Core
 {
     public class EventObserver<T> : IObserver<T>
     {

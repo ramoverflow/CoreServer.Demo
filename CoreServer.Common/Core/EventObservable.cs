@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CoreServer.Common.Util
+namespace CoreServer.Common.Core
 {
     public class EventObservable<T> : IObservable<T>
     {

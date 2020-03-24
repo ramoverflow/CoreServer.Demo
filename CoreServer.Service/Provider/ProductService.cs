@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CoreServer.Common;
+using CoreServer.Common.Core;
 using CoreServer.Common.Util;
 using CoreServer.Entity.MySqlDb;
 using CoreServer.Model;
@@ -11,6 +12,7 @@ namespace CoreServer.Service.Provider
     public class ProductService : BaseService, IProductService
     {
         private readonly EventObservable<ProductDto> _onAddProduct;
+        private EventObserver<ProductDto> _onAddProductObserver;
 
         public ProductService() : base(cfg =>
         {
@@ -42,23 +44,34 @@ namespace CoreServer.Service.Provider
             {
                 var productEntity = MapUtil.Map<Product>(product);
 
-                var tran = db.Ado.UseTran(() =>
+                try
                 {
+                    db.Ado.BeginTran();
+
                     productEntity.Id = Guid.NewGuid();
                     var newProduct = MapUtil.Map<ProductDto>(db.Insertable(productEntity).ExecuteReturnEntity());
 
                     _onAddProduct.Run(() => newProduct);
+                    
+                    db.Ado.CommitTran();
 
                     return newProduct;
-                });
-
-                return tran.Data;
+                }
+                catch (Exception e)
+                {
+                    db.Ado.RollbackTran();
+                    throw e;
+                }
             });
         }
 
-        public EventObservable<ProductDto> OnAddProduct()
+        public void RegisterAddProductEvent(EventObserver<ProductDto> observer)
         {
-            return _onAddProduct;
+            if (_onAddProductObserver == null)
+            {
+                _onAddProductObserver = observer;
+                _onAddProductObserver.Subscribe(_onAddProduct);
+            }
         }
 
         public void DeleteProduct(Guid productId)

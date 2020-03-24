@@ -1,6 +1,6 @@
 using System;
 
-namespace CoreServer.Common
+namespace CoreServer.Common.Core
 {
     public class AutoServiceAttribute:System.Attribute
     {

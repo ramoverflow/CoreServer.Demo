@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <PackageReference Include="DotNetCore.CAP" Version="3.0.2" />
+      <PackageReference Include="DotNetCore.CAP.InMemoryStorage" Version="3.0.2" />
       <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.0.0" />
     </ItemGroup>
 
