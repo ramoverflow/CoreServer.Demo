@@ -18,11 +18,30 @@ namespace CoreServer.Common.Configuration
 
                     _connectionString = databases[0].ConnectionString;
                 }
-                
+
                 return _connectionString;
             }
         }
 
+        private static CapConfig _capConfig;
+
+        public static CapConfig CapConfig
+        {
+            get
+            {
+                if (_capConfig == null)
+                {
+                    _capConfig = Configuration.GetSection("CapConfig").Get<CapConfig>();
+                }
+
+                return _capConfig;
+            }
+        }
+
+        #region config上下文
+
         public static IConfiguration Configuration { private get; set; }
+
+        #endregion
     }
 }

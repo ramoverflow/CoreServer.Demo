@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServer.Api", "CoreServer.Api\CoreServer.Api.csproj", "{513B1E72-E37A-485B-9FFE-505E9EEC86AC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServer.Entity", "CoreServer.Entity\CoreServer.Entity.csproj", "{74C78C2F-EAA4-4017-85A7-FC8F7C015174}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServer.Model", "CoreServer.Model\CoreServer.Model.csproj", "{70DBDD74-9560-47CA-BE43-26B03EB017B3}"
@@ -10,16 +8,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServer.Service", "CoreS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServer.Common", "CoreServer.Common\CoreServer.Common.csproj", "{CFD76124-541D-4F01-8E54-6C9B12410878}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroService", "MicroService", "{5770CEAF-D331-43FD-829A-F3C15EC23BF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServer.Api", "MicroService\CoreServer.Api\CoreServer.Api.csproj", "{24B454F3-C7DE-4659-8B90-EE02A11657E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreServer.Port.Station", "MicroService\CoreServer.Port.Station\CoreServer.Port.Station.csproj", "{F234CDF5-1246-4560-AED7-4C3C922ACD27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{513B1E72-E37A-485B-9FFE-505E9EEC86AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{513B1E72-E37A-485B-9FFE-505E9EEC86AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{513B1E72-E37A-485B-9FFE-505E9EEC86AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{513B1E72-E37A-485B-9FFE-505E9EEC86AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{74C78C2F-EAA4-4017-85A7-FC8F7C015174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{74C78C2F-EAA4-4017-85A7-FC8F7C015174}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74C78C2F-EAA4-4017-85A7-FC8F7C015174}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,5 +36,17 @@ Global
 		{CFD76124-541D-4F01-8E54-6C9B12410878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFD76124-541D-4F01-8E54-6C9B12410878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFD76124-541D-4F01-8E54-6C9B12410878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24B454F3-C7DE-4659-8B90-EE02A11657E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B454F3-C7DE-4659-8B90-EE02A11657E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B454F3-C7DE-4659-8B90-EE02A11657E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B454F3-C7DE-4659-8B90-EE02A11657E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F234CDF5-1246-4560-AED7-4C3C922ACD27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F234CDF5-1246-4560-AED7-4C3C922ACD27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F234CDF5-1246-4560-AED7-4C3C922ACD27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F234CDF5-1246-4560-AED7-4C3C922ACD27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24B454F3-C7DE-4659-8B90-EE02A11657E3} = {5770CEAF-D331-43FD-829A-F3C15EC23BF1}
+		{F234CDF5-1246-4560-AED7-4C3C922ACD27} = {5770CEAF-D331-43FD-829A-F3C15EC23BF1}
 	EndGlobalSection
 EndGlobal

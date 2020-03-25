@@ -29,24 +29,7 @@ namespace CoreServer.Api.Controllers
                     _capPublisher.Publish("core.server.addNewProduct", newProduct);
                 }));
         }
-
-        [NonAction]
-        [CapSubscribe("core.server.addNewProduct")]
-        public void OnAddNewProduct(ProductDto product)
-        {
-            try
-            {
-                Console.WriteLine("adding new product");
-                Console.WriteLine(JsonUtil.ToJson(product));
-                Console.WriteLine("throw exception...");
-                throw new Exception("测试的异常");
-            }
-            catch
-            {
-                _capPublisher.Publish("core.server.addFailed", product);
-            }
-        }
-
+        
         [NonAction]
         [CapSubscribe("core.server.addFailed")]
         public void OnAddFailed(ProductDto productDto)
